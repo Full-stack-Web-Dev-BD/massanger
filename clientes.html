@@ -1,0 +1,1355 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Botcenter - Omnichannel</title>
+    <link rel="icon" href="./dist/media/img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="./vendor/bundle.css">
+    <link rel="stylesheet" href="./dist/css/estilos.css">
+    <link rel="stylesheet" href="./dist/css/buscador.css">
+    <link rel="stylesheet" href="./vendor/enjoyhint/enjoyhint.css">
+    <link rel="stylesheet" href="./dist/css/app.min.css">
+    
+</head>
+<body>
+    <!-- page loading -->
+<div class="page-loading"></div>
+<!-- ./ page loading -->
+
+<!-- page tour modal 
+<div class="modal fade" id="pageTour" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-zoom" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center pt-5">
+                <div class="row">
+                    <div class="col-md-6 offset-3">
+                        <figure>
+                            <img src="dist/media/svg/undraw_product_tour_foyt.svg" class="img-fluid" alt="image">
+                        </figure>
+                        <p class="lead mt-5">Would you like to take a short page tour?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-primary start-tour">Start Tour</button>
+                <button type="button" class="btn" data-dismiss="modal" aria-label="Close">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+./ page tour modal -->
+
+<!-- disconnected modal -->
+<div class="modal fade" id="disconnected" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-zoom" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row mb-5">
+                    <div class="col-md-6 offset-3">
+                        <img src="./dist/media/svg/undraw_warning_cyit.svg" class="img-fluid" alt="image">
+                    </div>
+                </div>
+                <p class="lead text-center">Application disconnected</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-success btn-lg">Reconnect</button>
+                <a href="login.html" class="btn btn-link">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ./ disconnected modal -->
+
+<!-- voice call modal -->
+<div class="modal call fade" id="call" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-zoom" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="call">
+                    <div>
+                        <figure class="mb-4 avatar avatar-xl">
+                            <img src="http://via.placeholder.com/128X128" class="rounded-circle" alt="image">
+                        </figure>
+                        <h4>Brietta Blogg <span class="text-success">calling...</span></h4>
+                        <div class="action-button">
+                            <button type="button" class="btn btn-danger btn-floating btn-lg" data-dismiss="modal">
+                                <i data-feather="x"></i>
+                            </button>
+                            <button type="button" class="btn btn-success btn-pulse btn-floating btn-lg">
+                                <i data-feather="phone"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ./ voice call modal -->
+
+<!-- voice call modal -->
+<div class="modal call fade" id="videoCall" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-zoom" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="call">
+                    <div>
+                        <figure class="mb-4 avatar avatar-xl">
+                            <img src="http://via.placeholder.com/128X128" class="rounded-circle" alt="image">
+                        </figure>
+                        <h4>Brietta Blogg <span class="text-success">video calling...</span></h4>
+                        <div class="action-button">
+                            <button type="button" class="btn btn-danger btn-floating btn-lg" data-dismiss="modal">
+                                <i data-feather="x"></i>
+                            </button>
+                            <button type="button" class="btn btn-success btn-pulse btn-floating btn-lg">
+                                <i data-feather="video"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ./ voice call modal -->
+
+<!-- add friends modal -->
+<div class="modal fade" id="addFriends" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-zoom" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i data-feather="user-plus" class="mr-2"></i> Add Friends
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="ti-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info">Send invitations to friends.</div>
+                <form>
+                    <div class="form-group">
+                        <label for="emails" class="col-form-label">Email addresses</label>
+                        <input type="text" class="form-control" id="emails">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="col-form-label">Invitation message</label>
+                        <textarea class="form-control" id="message"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ./ add friends modal -->
+
+<!-- new group modal -->
+<div class="modal fade" id="newGroup" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-zoom" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i data-feather="users" class="mr-2"></i> New Group
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="ti-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="group_name" class="col-form-label">Group name</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="group_name">
+                            <div class="input-group-append">
+                                <button class="btn btn-light" data-toggle="tooltip" title="Emoji" type="button">
+                                    <i data-feather="smile"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mb-2">The group members</p>
+                    <div class="form-group">
+                        <div class="avatar-group">
+                            <figure class="avatar" data-toggle="tooltip" title="Tobit Spraging">
+                                <span class="avatar-title bg-success rounded-circle">T</span>
+                            </figure>
+                            <figure class="avatar" data-toggle="tooltip" title="Cloe Jeayes">
+                                <img src="http://via.placeholder.com/128X128" class="rounded-circle" alt="image">
+                            </figure>
+                            <figure class="avatar" data-toggle="tooltip" title="Marlee Perazzo">
+                                <span class="avatar-title bg-warning rounded-circle">M</span>
+                            </figure>
+                            <figure class="avatar" data-toggle="tooltip" title="Stafford Pioch">
+                                <img src="http://via.placeholder.com/128X128" class="rounded-circle" alt="image">
+                            </figure>
+                            <figure class="avatar" data-toggle="tooltip" title="Bethena Langsdon">
+                                <span class="avatar-title bg-info rounded-circle">B</span>
+                            </figure>
+                            <a href="#" title="Add friends">
+                                <figure class="avatar">
+                                    <span class="avatar-title bg-primary rounded-circle">
+                                        <i data-feather="plus"></i>
+                                    </span>
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description" class="col-form-label">Description</label>
+                        <textarea class="form-control" id="description"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Create Group</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ./ new group modal -->
+
+<!-- setting modal -->
+<div class="modal fade" id="settingModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-zoom" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i data-feather="settings" class="mr-2"></i> Settings
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="ti-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#account" role="tab" aria-controls="account"
+                           aria-selected="true">Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#notification" role="tab"
+                           aria-controls="notification" aria-selected="false">Notification</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+                           aria-selected="false">Security</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane show active" id="account" role="tabpanel">
+                        <div class="form-item custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" checked id="customSwitch1">
+                            <label class="custom-control-label" for="customSwitch1">Allow connected contacts</label>
+                        </div>
+                        <div class="form-item custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" checked id="customSwitch2">
+                            <label class="custom-control-label" for="customSwitch2">Confirm message requests</label>
+                        </div>
+                        <div class="form-item custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" checked id="customSwitch3">
+                            <label class="custom-control-label" for="customSwitch3">Profile privacy</label>
+                        </div>
+                        <div class="form-item custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch4">
+                            <label class="custom-control-label" for="customSwitch4">Developer mode options</label>
+                        </div>
+                        <div class="form-item custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" checked id="customSwitch5">
+                            <label class="custom-control-label" for="customSwitch5">Two-step security
+                                verification</label>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="notification" role="tabpanel">
+                        <div class="form-item custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" checked id="customSwitch6">
+                            <label class="custom-control-label" for="customSwitch6">Allow mobile notifications</label>
+                        </div>
+                        <div class="form-item custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch7">
+                            <label class="custom-control-label" for="customSwitch7">Notifications from your
+                                friends</label>
+                        </div>
+                        <div class="form-item custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch8">
+                            <label class="custom-control-label" for="customSwitch8">Send notifications by email</label>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="contact" role="tabpanel">
+                        <div class="form-item custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch9">
+                            <label class="custom-control-label" for="customSwitch9">Suggest changing passwords every
+                                month.</label>
+                        </div>
+                        <div class="form-item custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" checked id="customSwitch10">
+                            <label class="custom-control-label" for="customSwitch10">Let me know about suspicious
+                                entries to your account</label>
+                        </div>
+                        <div class="form-item">
+                            <p>
+                                <a class="btn btn-light" data-toggle="collapse" href="#collapseExample" role="button"
+                                   aria-expanded="false"
+                                   aria-controls="collapseExample">
+                                    <i data-feather="plus" class="mr-2"></i> Security Questions
+                                </a>
+                            </p>
+                            <div class="collapse" id="collapseExample">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Question 1">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Answer 1">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Question 2">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Answer 2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ./ setting modal -->
+
+<!-- edit profile modal -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-zoom" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i data-feather="edit-2" class="mr-2"></i> Edit Profile
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="ti-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#personal" role="tab"
+                           aria-controls="personal" aria-selected="true">Personal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#about" role="tab" aria-controls="about"
+                           aria-selected="false">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#social-links" role="tab"
+                           aria-controls="social-links" aria-selected="false">Social Links</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane show active" id="personal" role="tabpanel">
+                        <form>
+                            <div class="form-group">
+                                <label for="fullname" class="col-form-label">Fullname</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="fullname">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i data-feather="user"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">Avatar</label>
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <figure class="avatar mr-3 item-rtl">
+                                            <img src="http://via.placeholder.com/128X128" class="rounded-circle"
+                                                 alt="image">
+                                        </figure>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="customFile">
+                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="city" class="col-form-label">City</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="city" placeholder="Ex: Columbia">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i data-feather="target"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="col-form-label">Phone</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="phone" placeholder="(555) 555 55 55">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i data-feather="phone"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="website" class="col-form-label">Website</label>
+                                <input type="text" class="form-control" id="website" placeholder="https://">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="about" role="tabpanel">
+                        <form>
+                            <div class="form-group">
+                                <label for="about-text" class="col-form-label">Write a few words that describe
+                                    you</label>
+                                <textarea class="form-control" id="about-text"></textarea>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" checked id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1">View profile</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="social-links" role="tabpanel">
+                        <form>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Username">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text bg-facebook">
+                                            <i class="ti-facebook"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Username">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text bg-twitter">
+                                            <i class="ti-twitter"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Username">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text bg-instagram">
+                                            <i class="ti-instagram"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Username">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text bg-linkedin">
+                                            <i class="ti-linkedin"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Username">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text bg-dribbble">
+                                            <i class="ti-dribbble"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Username">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text bg-youtube">
+                                            <i class="ti-youtube"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Username">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text bg-google">
+                                            <i class="ti-google"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Username">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text bg-whatsapp">
+                                            <i class="fa fa-whatsapp"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--  Modal Chat   -->
+
+<div class="modal fade" id="chat" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-zoom" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="mr-2 ti-comment"></i> conversación #User_6545676545
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="ti-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="contenedor-info_chat">
+                    <div class="cont_chat">
+                        <div class="chat_usuario">
+                            <div class="bot-icon-us">
+                                <img src="./dist/media/img/logo_Botcenter.png" alt="">
+                            </div>
+                            <div class="bot-chat-us">
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. </p>
+                            <div class="bot-fechaus">
+                                <p>April 13, 11:16 PM</p>
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="chat_cliente">
+                            
+                            <div class="bot-chat-clie">
+                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. </p>
+                              <div class="bot-fecha_client">
+                                <p>April 13, 11:18 PM</p>
+                                <p class="name-chat_info">Usuario#5474545</p>
+                              </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="chat_usuario">
+                            <div class="bot-icon-us">
+                                <img src="./dist/media/img/logo_Botcenter.png" alt="">
+                            </div>
+                            <div class="bot-chat-us">
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. </p>
+                            <div class="bot-fechaus">
+                                <p>April 13, 11:16 PM</p>
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="chat_cliente">
+                            <div class="bot-chat-clie">
+                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. </p>
+                              <div class="bot-fecha_client">
+                                <p>April 13, 11:18 PM</p>
+                                <p class="name-chat_info">Usuario#5474545</p>
+                              </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--  Modal Editar   -->
+<div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-zoom" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="mr-2 ti-pencil"></i> Editar
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="ti-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#detalles" role="tab"
+                           aria-controls="detalles" aria-selected="true">Detalles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#notas" role="tab" aria-controls="notas"
+                           aria-selected="false">Notas</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane show active" id="detalles" role="tabpanel">
+                        <form action="">
+                            <input type="text" class="edit-input" name="" id="" placeholder="Nombres" required>
+                            <input type="text" class="edit-input" name="" id="" placeholder="Correo Electronico" required>
+                            <input type="text" class="edit-input" name="" id="" placeholder="Telefono" required>
+                            <input type="text" class="edit-input" name="" id="" placeholder="Empresa" required>
+                            <select class="edit-despegable" name="" id="">
+                                <option value="Estatus">Estado</option>
+                                    <option value="1">En Linea</option> 
+                                    <option value="2">Ocupado</option> 
+                                    <option value="3">No disponible</option> 
+                            </select>
+                            <button type="button" class="btn btn-primary boton-save">Guardar</button>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="notas" role="tabpanel">
+                        <form action="">
+                            <textarea class="edit-textarea" name="" id="" cols="0" rows="0" placeholder="Comentario" required></textarea>
+                            <button type="button" class="btn btn-primary boton-save">Guardar</button>
+                        </form>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Eliminar -->
+<div class="modal fade" id="eliminar" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-zoom" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="mr-2 ti-trash"></i> Elimninar
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="ti-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Si eliminas esta conversación sera de manare definitiva y no podra recuperarla. ¿Estas Seguro de elimilar la conversación?</p>
+                <p class="dat-eliminar"><strong>Escriba la palabra ELIMINAR y haga click en el botón ELIMINAR</strong></p>
+                <input type="text" class="input-eliminar" name="" placeholder="ELIMINAR" required>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Cancelar</button>
+                <button type="button" class="btn red">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Agregar Canal -->
+<div class="modal fade" id="" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-zoom" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="mr-2 ti-plus"></i> Agregar Canal
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="ti-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>Conecta Tu Canal</h3>
+                <p>Seleccione el canal que desee conectar</p>
+
+                <div class="contenedor-canales">
+                    <div class="grid-canales">
+                        <a href="#">
+                            <span class="avanzado">Avanzado</span>
+                            <img src="../dist/media/img/icono-whatsaap.png" alt="">
+                            <p>WhatsApp</p>
+                        </a>
+                    </div>
+                    <div class="grid-canales">
+                        <a href="#">
+                            <span class="facil">Facil</span>
+                            <img src="../dist/media/img/icono-mesenger.png" alt="">
+                            <p>Messenger</p>
+                        </a>
+                    </div>
+                    <div class="grid-canales">
+                        <a href="#">
+                            <span class="moderada">Moderada</span>
+                            <img src="../dist/media/img/icono-webchat.png" alt="">
+                            <p>Web Chat</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Cancelar</button>
+                <button type="button" class="btn btn-primary">Siguiente</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Agregar Canal Parte 2 -->
+<div class="modal fade" id="Agregar-Canal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-zoom" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="mr-2 ti-plus"></i> Agregar Canal
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="ti-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>Conectando el widget de WhatsApp</h3>
+                <p>Esta integración permite que su equipo chatee con los visitantes de su sitio web</p>
+                <br>
+                <br>
+                <p>1.- Agregue los sitios web donde se agregará el widget</p>
+
+                <br>
+                <p>2.- Seleccione un color de tema para el widget</p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Cancelar</button>
+                <button type="button" class="btn btn-primary">Siguiente</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Configurar Canal-->
+<div class="modal fade" id="Configurar" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-zoom" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="mr-2 ti-pencil"></i> Configurar
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="ti-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Siguiente</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ./ edit profile modal -->
+<div class="main-nav">
+    <div class="box-logo">
+        <div class="logo">
+            <img src="./dist/media/img/logo_ver3.png" alt="">
+        </div>
+    </div>
+    <div class="box-right">
+
+    </div>
+    
+</div>
+
+<!-- layout -->
+<div class="layout">
+    
+    <!-- navigation -->
+    <nav class="navigation">
+        <div class="nav-group">
+            <ul>
+                <li>
+                    <a class="active" data-navigation-target="chats" href="index.html" data-toggle="tooltip" title="Chats"
+                       data-placement="right">
+                        <span class="badge badge-warning"></span>
+                        <i data-feather="message-circle"></i>
+                    </a>
+                </li>
+                <li>
+                    <a data-navigation-target="friends" href="index.html" data-toggle="tooltip"
+                       title="Friends" data-placement="right">
+                        <span class="badge badge-danger"></span>
+                        <i data-feather="user"></i>
+                    </a>
+                </li>
+                <li>
+                    <a data-navigation-target="favorites" data-toggle="tooltip" title="Favorites" data-placement="right"
+                    href="index.html">
+                        <i data-feather="star"></i>
+                    </a>
+                </li>
+                <li >
+                    <a data-navigation-target="archived" href="index.html#archived" data-toggle="tooltip"
+                       title="Archived" data-placement="right">
+                        <i data-feather="archive"></i>
+                    </a>
+                </li>
+                <li class="brackets">
+                    <a data-navigation-target="clientes" data-toggle="tooltip" title="Admin" data-placement="right"
+                       href="#">
+                        <i data-feather="settings"></i>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#" class="dark-light-switcher" data-toggle="tooltip" title="Dark mode"
+                       data-placement="right">
+                        <i data-feather="moon"></i>
+                    </a>
+                </li>
+
+                <li data-toggle="tooltip" title="User menu" data-placement="right">
+                    <a href="./login.html" data-toggle="dropdown">
+                        <figure class="avatar">
+                            <img src="./dist/media/img/agente.jpg" class="rounded-circle" alt="image">
+                        </figure>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item" data-toggle="modal" data-target="#editProfileModal">Edit
+                            profile</a>
+                        <a href="#" class="dropdown-item" data-navigation-target="contact-information">Profile</a>
+                        <a href="#" class="dropdown-item" data-toggle="modal" data-target="#settingModal">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="login.html" class="dropdown-item text-danger">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- ./ navigation -->
+    
+    <!-- content -->
+    <div class="content">
+        
+        <!-- sidebar group -->
+        <div class="contenedor-admin">
+            <div class="modal-body">
+                <div class="box-adminmenu">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#usuarios" role="tab" aria-controls="usuarios"
+                               aria-selected="true">Usuarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#configuracion" role="tab"
+                               aria-controls="configuracion" aria-selected="false">Configuración</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        
+                        <div class="tab-pane show active padded" id="usuarios" role="tabpanel">
+                            <div class="contenedor_buscador">
+
+                                <div class="box-contenedor_se">
+                                    <form action="" class="search-bar">
+                                        <input type="search" name="search" pattern=".*\S.*" placeholder="" required>
+                                        <button class="search-btn" type="submit">
+                                            <span>Search</span>
+                                        </button>
+                                    </form>
+                                </div>
+                                <div class="box-contenedor_se">
+                                    <div class="box-con-input">
+                                        <div class="input-group masked-input tab_bl">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="zmdi ti-calendar"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control date" placeholder="Desde: 30/07/2016">
+                                        </div>
+                                    </div>
+                                    <div class="box-con-input">
+                                        <div class="input-group masked-input tab_bl">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="zmdi ti-calendar"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control date" placeholder="Hasta: 30/07/2016">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-contenedor_se exportar">
+                                    <a href=""><p>Exportar<i class="fa fa-download"></i></a></p></a>
+                                </div>
+                            </div>
+                            <table class="table table-hover mb-0 c_list c_table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <div class="checkbox">
+                                                <input id="delete_1" type="checkbox">
+                                                <label for="delete_1">&nbsp;</label>
+                                            </div>
+                                        </th>
+                                        <th>Name</th>                                    
+                                        <th data-breakpoints="xs">Phone</th>
+                                        <th data-breakpoints="xs sm md">Email</th>
+                                        <th data-breakpoints="xs sm md">Address</th>
+                                        <th data-breakpoints="xs">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="checkbox">
+                                                <input id="delete_2" type="checkbox">
+                                                <label for="delete_2">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="c_name">John Smith</p>
+                                        </td>
+                                        <td>
+                                            <span class="phone"><i class="zmdi zmdi-whatsapp mr-2"></i>264-625-2583</span>
+                                        </td>
+                                        <td>
+                                            <span class="email"><a href="javascript:void(0);" title="">johnsmith@gmail.com</a></span>
+                                        </td>
+                                        <td>
+                                            <address><i class="zmdi zmdi-pin"></i>123 6th St. Melbourne, FL 32904</address>
+                                        </td>
+                                        
+                                        <td>
+                                            <button class="btn plomo btn-sm" data-toggle="tooltip" title="Chat">
+                                                <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#chat">
+                                                    <i class="ti-comment"></i>
+                                                </a>
+                                            </button>
+
+                                            <button class="btn btn-primary btn-sm" data-toggle="tooltip" title="Editar">
+                                                <a class="btn-outline-light" href="#" data-toggle="modal" data-target="#editar">
+                                                    <i class="ti-pencil"></i>
+                                                </a>
+                                            </button>
+
+                                            <button class="btn btn-danger btn-sm" data-toggle="tooltip" title="Elimiar">
+                                                <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#eliminar">
+                                                    <i class="ti-trash"></i>
+                                                </a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="checkbox">
+                                                <input id="delete_3" type="checkbox">
+                                                <label for="delete_3">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="c_name">Hossein Shams</p>
+                                        </td>
+                                        <td>
+                                            <span class="phone"><i class="zmdi zmdi-whatsapp mr-2"></i>264-625-5689</span>
+                                        </td>
+                                        <td>
+                                            <span class="email"><a href="javascript:void(0);" title="">hosseinshams@gmail.com</a></span>
+                                        </td>
+                                        <td>
+                                            <address><i class="zmdi zmdi-pin"></i>44 Shirley Ave. West Chicago, IL 60185</address>
+                                        </td>
+                                        <td>
+                                            <button class="btn plomo btn-sm" data-toggle="tooltip" title="Chat">
+                                                <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#chat">
+                                                    <i class="ti-comment"></i>
+                                                </a>
+                                            </button>
+
+                                            <button class="btn btn-primary btn-sm" data-toggle="tooltip" title="Editar">
+                                                <a class="btn-outline-light" href="#" data-toggle="modal" data-target="#editar">
+                                                    <i class="ti-pencil"></i>
+                                                </a>
+                                            </button>
+
+                                            <button class="btn btn-danger btn-sm" data-toggle="tooltip" title="Elimiar">
+                                                <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#eliminar">
+                                                    <i class="ti-trash"></i>
+                                                </a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="checkbox">
+                                                <input id="delete_4" type="checkbox">
+                                                <label for="delete_4">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="c_name">Maryam Amiri</p>
+                                        </td>
+                                        <td>
+                                            <span class="phone"><i class="zmdi zmdi-whatsapp mr-2"></i>264-625-9513</span>
+                                        </td>
+                                        <td>
+                                            <span class="email"><a href="javascript:void(0);" title="">maryamamiri@gmail.com</a></span>
+                                        </td>
+                                        <td>
+                                            <address><i class="zmdi zmdi-pin"></i>123 6th St. Melbourne, FL 32904</address>
+                                        </td>
+                                        <td>
+                                            <button class="btn plomo btn-sm" data-toggle="tooltip" title="Chat">
+                                                <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#chat">
+                                                    <i class="ti-comment"></i>
+                                                </a>
+                                            </button>
+
+                                            <button class="btn btn-primary btn-sm" data-toggle="tooltip" title="Editar">
+                                                <a class="btn-outline-light" href="#" data-toggle="modal" data-target="#editar">
+                                                    <i class="ti-pencil"></i>
+                                                </a>
+                                            </button>
+
+                                            <button class="btn btn-danger btn-sm" data-toggle="tooltip" title="Elimiar">
+                                                <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#eliminar">
+                                                    <i class="ti-trash"></i>
+                                                </a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="checkbox">
+                                                <input id="delete_5" type="checkbox">
+                                                <label for="delete_5">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="c_name">Tim Hank</p>
+                                        </td>
+                                        <td>
+                                            <span class="phone"><i class="zmdi zmdi-whatsapp mr-2"></i>264-625-1212</span>
+                                        </td>
+                                        <td>
+                                            <span class="email"><a href="javascript:void(0);" title="">timhank@gmail.com</a></span>
+                                        </td>
+                                        <td>
+                                            <address><i class="zmdi zmdi-pin"></i>70 Bowman St. South Windsor, CT 06074</address>
+                                        </td>
+                                        <td>
+                                            <button class="btn plomo btn-sm" data-toggle="tooltip" title="Chat">
+                                                <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#chat">
+                                                    <i class="ti-comment"></i>
+                                                </a>
+                                            </button>
+
+                                            <button class="btn btn-primary btn-sm" data-toggle="tooltip" title="Editar">
+                                                <a class="btn-outline-light" href="#" data-toggle="modal" data-target="#editar">
+                                                    <i class="ti-pencil"></i>
+                                                </a>
+                                            </button>
+
+                                            <button class="btn btn-danger btn-sm" data-toggle="tooltip" title="Elimiar">
+                                                <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#eliminar">
+                                                    <i class="ti-trash"></i>
+                                                </a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="checkbox">
+                                                <input id="delete_6" type="checkbox">
+                                                <label for="delete_6">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="c_name">Fidel Tonn</p>
+                                        </td>
+                                        <td>
+                                            <span class="phone"><i class="zmdi zmdi-whatsapp mr-2"></i>264-625-2323</span>
+                                        </td>
+                                        <td>
+                                            <span class="email"><a href="javascript:void(0);" title="">fideltonn@gmail.com</a></span>
+                                        </td>
+                                        <td>
+                                            <address><i class="zmdi zmdi-pin"></i>514 S. Magnolia St. Orlando, FL 32806</address>
+                                        </td>
+                                        <td>
+                                            <button class="btn plomo btn-sm" data-toggle="tooltip" title="Chat">
+                                                <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#chat">
+                                                    <i class="ti-comment"></i>
+                                                </a>
+                                            </button>
+
+                                            <button class="btn btn-primary btn-sm" data-toggle="tooltip" title="Editar">
+                                                <a class="btn-outline-light" href="#" data-toggle="modal" data-target="#editar">
+                                                    <i class="ti-pencil"></i>
+                                                </a>
+                                            </button>
+
+                                            <button class="btn btn-danger btn-sm" data-toggle="tooltip" title="Elimiar">
+                                                <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#eliminar">
+                                                    <i class="ti-trash"></i>
+                                                </a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="checkbox">
+                                                <input id="delete_7" type="checkbox">
+                                                <label for="delete_7">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="c_name">Gary Camara</p>
+                                        </td>
+                                        <td>
+                                            <span class="phone"><i class="zmdi zmdi-whatsapp mr-2"></i>264-625-1005</span>
+                                        </td>
+                                        <td>
+                                            <span class="email"><a href="javascript:void(0);" title="">garycamara@gmail.com</a></span>
+                                        </td>
+                                        <td>
+                                            <address><i class="zmdi zmdi-pin"></i>44 Shirley Ave. West Chicago, IL 60185</address>
+                                        </td>
+                                        <td>
+                                            <button class="btn plomo btn-sm" data-toggle="tooltip" title="Chat">
+                                                <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#chat">
+                                                    <i class="ti-comment"></i>
+                                                </a>
+                                            </button>
+
+                                            <button class="btn btn-primary btn-sm" data-toggle="tooltip" title="Editar">
+                                                <a class="btn-outline-light" href="#" data-toggle="modal" data-target="#editar">
+                                                    <i class="ti-pencil"></i>
+                                                </a>
+                                            </button>
+
+                                            <button class="btn btn-danger btn-sm" data-toggle="tooltip" title="Elimiar">
+                                                <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#eliminar">
+                                                    <i class="ti-trash"></i>
+                                                </a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="checkbox">
+                                                <input id="delete_8" type="checkbox">
+                                                <label for="delete_8">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="c_name">Frank Camly</p>
+                                        </td>
+                                        <td>
+                                            <span class="phone"><i class="zmdi zmdi-whatsapp mr-2"></i>264-625-9999</span>
+                                        </td>
+                                        <td>
+                                            <span class="email"><a href="javascript:void(0);" title="">frankcamly@gmail.com</a></span>
+                                        </td>
+                                        <td>
+                                            <address><i class="zmdi zmdi-pin"></i>123 6th St. Melbourne, FL 32904</address>
+                                        </td>
+                                        <td>
+                                            <button class="btn plomo btn-sm" data-toggle="tooltip" title="Chat">
+                                                <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#chat">
+                                                    <i class="ti-comment"></i>
+                                                </a>
+                                            </button>
+
+                                            <button class="btn btn-primary btn-sm" data-toggle="tooltip" title="Editar">
+                                                <a class="btn-outline-light" href="#" data-toggle="modal" data-target="#editar">
+                                                    <i class="ti-pencil"></i>
+                                                </a>
+                                            </button>
+
+                                            <button class="btn btn-danger btn-sm" data-toggle="tooltip" title="Elimiar">
+                                                <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#eliminar">
+                                                    <i class="ti-trash"></i>
+                                                </a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="checkbox">
+                                                <input id="delete_9" type="checkbox">
+                                                <label for="delete_9">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="c_name">Tim Hank</p>
+                                        </td>
+                                        <td>
+                                            <span class="phone"><i class="zmdi zmdi-whatsapp mr-2"></i>264-625-1212</span>
+                                        </td>
+                                        <td>
+                                            <span class="email"><a href="javascript:void(0);" title="">timhank@gmail.com</a></span>
+                                        </td>
+                                        <td>
+                                            <address><i class="zmdi zmdi-pin"></i>70 Bowman St. South Windsor, CT 06074</address>
+                                        </td>
+                                        <td>
+                                            <button class="btn plomo btn-sm" data-toggle="tooltip" title="Chat">
+                                                <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#chat">
+                                                    <i class="ti-comment"></i>
+                                                </a>
+                                            </button>
+
+                                            <button class="btn btn-primary btn-sm" data-toggle="tooltip" title="Editar">
+                                                <a class="btn-outline-light" href="#" data-toggle="modal" data-target="#editar">
+                                                    <i class="ti-pencil"></i>
+                                                </a>
+                                            </button>
+
+                                            <button class="btn btn-danger btn-sm" data-toggle="tooltip" title="Elimiar">
+                                                <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#eliminar">
+                                                    <i class="ti-trash"></i>
+                                                </a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <section class="paginacion">
+                                <ul>
+                                    <li><a href="" class="active">1</a></li>
+                                    <li><a href="">2</a></li>
+                                    <li><a href="">3</a></li>
+                                    <li><a href="">4</a></li>
+                                    <li><a href="">5</a></li>
+                                </ul>
+                            </section>
+                        </div>
+                       
+                        <div class="tab-pane padded" id="configuracion" role="tabpanel">
+                            
+                            <div class="box-configuracion">
+                                <h4>CANALES</h4>
+                                <button class="btn btn-primary" data-toggle="tooltip" title="Agregar Canal">
+                                    <a class="btn-outline-light" href="#" data-toggle="modal" data-target="#Agregar-Canal">
+                                        AGREGAR CANAL
+                                    </a>
+                                </button>
+
+                                <div class="box-canales">
+                                    <div class="canales-left">
+                                        <div class="icono whatssap">
+                                            <img src="../dist/media/img/icono-whatsaap.png" alt="">
+                                        </div>
+                                        <h3>Chat API (04)</h3>
+                                        <p>Chat API</p>
+                                    </div>
+                                    <div class="canales-right">
+                                        <button class="btn btn-primary" data-toggle="tooltip" title="Eliminar">
+                                            <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#eliminar">
+                                                <i class=""></i> ELiminar
+                                            </a>
+                                        </button>
+
+                                        <button class="btn btn-danger" data-toggle="tooltip" title="Configurar">
+                                            <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#Configurar">
+                                                <i class=""></i> Configurar
+                                            </a>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-canales">
+                                    <div class="canales-left">
+                                        <div class="icono mesenger">
+                                            <img src="../dist/media/img/icono-mesenger.png" alt="">
+                                        </div>
+                                        <h3>Facebook Messenger (02)</h3>
+                                        <p>Facebook Messenger</p>
+                                    </div>
+                                    <div class="canales-right">
+                                        <button class="btn btn-primary" data-toggle="tooltip" title="Eliminar">
+                                            <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#eliminar">
+                                                <i class=""></i> ELiminar
+                                            </a>
+                                        </button>
+
+                                        <button class="btn btn-danger" data-toggle="tooltip" title="Configurar">
+                                            <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#Configurar">
+                                                <i class=""></i> Configurar
+                                            </a>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-canales">
+                                    <div class="canales-left">
+                                        <div class="icono webchat">
+                                            <img src="../dist/media/img/icono-webchat.png" alt="">
+                                        </div>
+                                        <h3>Web Chat</h3>
+                                        <p>Web Chat</p>
+                                    </div>
+                                    <div class="canales-right">
+                                        <button class="btn btn-primary" data-toggle="tooltip" title="Eliminar">
+                                            <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#eliminar">
+                                                <i class=""></i> ELiminar
+                                            </a>
+                                        </button>
+
+                                        <button class="btn btn-danger" data-toggle="tooltip" title="Configurar">
+                                            <a href="#" class="btn-outline-light" data-toggle="modal" data-target="#Configurar">
+                                                <i class=""></i> Configurar
+                                            </a>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+
+                 
+            </div>
+            
+                
+        </div>
+
+        <div class="sidebar-group">
+
+        </div>
+        <!-- ./ sidebar group -->
+
+
+        
+
+    </div>
+    <!-- ./ content -->
+
+</div>
+<!-- ./ layout -->
+
+<script type="text/javascript" src="./dist/js/advanced-form-elements.js"></script>
+<script src="./vendor/bundle.js"></script>
+<script src="./vendor/enjoyhint/enjoyhint.min.js"></script>
+<script src="./dist/js/app.min.js"></script>
+<script src="./dist/js/examples.js"></script>
+</body>
+</html>
